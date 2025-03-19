@@ -1,0 +1,36 @@
+.header {
+    background: white;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo a {
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    
+  }
+  
+  .nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav ul li a {
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .nav ul li a:hover {
+    color: #d1ffd7;
+  }
