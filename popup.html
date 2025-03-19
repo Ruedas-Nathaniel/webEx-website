@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gender-Based Discussion</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <header>
+      <h1>Gender Forum</h1>
+      <p>Promoting inclusivity in online discussions</p>
+    </header>
+    <main>
+      <div class="form-group">
+        <label for="pronouns">Select Pronouns:</label>
+        <select id="pronouns">
+          <option value="they/them">They/Them</option>
+          <option value="she/her">She/Her</option>
+          <option value="he/him">He/Him</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="toggle">
+          <input type="checkbox" id="safe-space">
+          <span class="slider"></span>
+          <span class="toggle-label">Enable Safe Space Mode</span>
+        </label>
+      </div>
+      <button id="report" class="report-button">
+        🚩 Report Harmful Content
+      </button>
+    </main>
+    <footer>
+      <a href="http://localhost:3000/" target="_blank">Visit Website</a>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

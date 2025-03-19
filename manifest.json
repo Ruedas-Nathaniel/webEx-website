@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "Gender-Based Discussion Forum",
+    "version": "1.0",
+    "description": "A web extension to promote gender-neutral language and inclusivity in online discussions.",
+    "permissions": ["storage", "activeTab", "scripting", "notifications"],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icon.jpg",
+        "48": "icon.jpg",
+        "128": "icon.jpg"
+      }
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ]
+  }
