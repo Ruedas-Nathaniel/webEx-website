@@ -5,8 +5,8 @@ import Footer from "./components/Footer/Footer";
 import Home from "./components/Home/Home";
 import Settings from "./components/Settings/Settings";
 import Resources from "./components/Resources/Resources";
-import "./App.css"; // ✅ Correct import
-
+import "./App.css"; 
+import Analysis from "./components/Analysis/Analysis";
 
 function App() {
   return (
@@ -18,6 +18,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/resources" element={<Resources />} />
+            <Route path="/analysis" element={<Analysis />} />
+            
           </Routes>
         </main>
         <Footer />

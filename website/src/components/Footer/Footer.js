@@ -1,9 +1,9 @@
 import React from "react";
-import "./Footer.js"
+import styles from "./Footer.module.css"
 const Footer = () => {
   return (
-    <footer>
-      <p>&copy; 2023 Gender-Based Discussion Forum</p>
+    <footer className={styles.footer}>
+      <p>&copy; 2025 Gender-Based Discussion Forum</p>
     </footer>
   );
 };

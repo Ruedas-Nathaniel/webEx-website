@@ -1,11 +1,12 @@
 import React from "react";
+import styles from "./Resources.module.css";
 
 const Resources = () => {
   return (
     <main>
-      <section>
-        <h2>LGBTQ+ Support and Resources</h2>
-        <ul>
+      <section >
+        <h2>LGBTQ+ Support and Forums</h2>
+        <ul className = {styles.Resources}>
           <li>
             <a href="https://www.glaad.org" target="_blank" rel="noopener noreferrer">
               GLAAD

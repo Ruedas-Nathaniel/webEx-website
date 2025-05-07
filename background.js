@@ -1,21 +1,52 @@
-chrome.runtime.onInstalled.addListener(() => {
-    console.log("Gender-Based Discussion Extension Installed");
-  });
-  
-  // Example: Notify user about LGBTQ+ awareness days
-  const awarenessDays = [
-    { date: "2023-06-01", event: "Pride Month" },
-    { date: "2023-03-31", event: "Transgender Day of Visibility" }
-  ];
-  
-  const today = new Date().toISOString().split("T")[0];
-  const event = awarenessDays.find((day) => day.date === today);
-  
-  if (event) {
-    chrome.notifications.create({
-      type: "basic",
-      iconUrl: "icons/icon128.png",
-      title: "LGBTQ+ Awareness Day",
-      message: `Today is ${event.event}!`
-    });
+// background.js - Enhanced Version
+const AWARENESS_DAYS = [
+  { date: "06-01", event: "Pride Month" },
+  { date: "03-31", event: "Transgender Day of Visibility" },
+  { date: "10-11", event: "National Coming Out Day" }
+];
+
+// Installation
+chrome.runtime.onInstalled.addListener(({reason}) => {
+  if (reason === 'install') {
+    showWelcomeNotification();
+    initDefaultSettings();
   }
+  checkAwarenessDays();
+});
+
+// Daily check for awareness days
+function checkAwarenessDays() {
+  const today = new Date();
+  const dateStr = `${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+  
+  const event = AWARENESS_DAYS.find(day => day.date === dateStr);
+  if (event) {
+    showAwarenessNotification(event);
+  }
+}
+
+function showAwarenessNotification(event) {
+  chrome.notifications.create({
+    type: 'basic',
+    iconUrl: 'icons/icon128.png',
+    title: 'LGBTQ+ Awareness',
+    message: `Today is ${event.event}! Click to learn more.`,
+    buttons: [{ title: 'Learn More' }]
+  });
+}
+
+// Notification interaction
+chrome.notifications.onButtonClicked.addListener((notificationId, buttonIndex) => {
+  if (buttonIndex === 0) {
+    chrome.tabs.create({ url: 'https://www.glaad.org/calendar' });
+  }
+});
+
+// Default settings
+function initDefaultSettings() {
+  chrome.storage.sync.set({
+    pronouns: 'They/Them',
+    safeSpace: true,
+    lastUpdated: Date.now()
+  });
+}

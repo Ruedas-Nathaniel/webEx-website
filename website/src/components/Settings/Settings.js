@@ -1,46 +1,48 @@
 import React, { useState } from "react";
 import styles from "./Settings.module.css";
-
+import Profile from "./menu/Profile.js";
+import Links from "./menu/Link.js";
 const Settings = () => {
-  const [pronouns, setPronouns] = useState("they/them");
-  const [safeSpace, setSafeSpace] = useState(false);
+  const topics = ["General", "Profile", "Preference", "Links"];
+  const [activeTopic, setActiveTopic] = useState("General");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`Settings saved: Pronouns - ${pronouns}, Safe Space - ${safeSpace}`);
+  const renderContent = (topic) => {
+    switch (topic) {
+      case "General":
+        return <p>This is the General settings section.</p>;
+      case "Profile":
+        return <Profile />
+      case "Preference":
+        return <p>Set your Preferences here.</p>;
+      case "Links":
+        return <Links />
+      default:
+        return <p>Select a topic to view content.</p>;
+    }
   };
 
   return (
     <section className={styles.settings}>
-      <h2>Settings</h2>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <div className={styles.formGroup}>
-          <label htmlFor="pronouns">Select Pronouns:</label>
-          <select
-            id="pronouns"
-            value={pronouns}
-            onChange={(e) => setPronouns(e.target.value)}
-          >
-            <option value="they/them">They/Them</option>
-            <option value="she/her">She/Her</option>
-            <option value="he/him">He/Him</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-        <div className={styles.formGroup}>
-          <label>
-            <input
-              type="checkbox"
-              checked={safeSpace}
-              onChange={(e) => setSafeSpace(e.target.checked)}
-            />
-            Enable Safe Space Mode
-          </label>
-        </div>
-        <button type="submit" className={styles.btn}>
-          Save
-        </button>
-      </form>
+      <aside className={styles.menuOuter}>
+        <ul className={styles.menu}>
+          {topics.map((topic) => (
+            <li
+              key={topic}
+              className={`${styles.menuItem} ${
+                activeTopic === topic ? styles.active : ""
+              }`}
+              onClick={() => setActiveTopic(topic)}
+            >
+              {topic}
+            </li>
+          ))}
+        </ul>
+      </aside>
+
+      <main className={styles.mainContent}>
+        <h2>{activeTopic}</h2>
+        {renderContent(activeTopic)}
+      </main>
     </section>
   );
 };

@@ -1,0 +1,22 @@
+.analysisContainer {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: auto;
+    margin-bottom: 100%;
+  }
+  
+  .chartRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .chartBox {
+    flex: 1 1 45%;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  

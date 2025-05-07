@@ -1,7 +1,10 @@
 .footer {
-    background: #333;
-    color: white;
+    background: #f4ebe9;
+    color: rgb(0, 0, 0);
     text-align: center;
     padding: 1rem;
     margin-top: auto;
+    display: flex;
+    justify-content: center;
+    
   }
